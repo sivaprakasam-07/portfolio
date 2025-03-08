@@ -3,7 +3,7 @@
 Welcome to the repository for my personal portfolio website! This site is designed to showcase my skills, projects, and experiences as a MERN Stack Developer. It's built using **React.js** and **Tailwind CSS**, and it's hosted on **Vercel**.
 
 ## 🚀 Live Demo
-Check out the live version of the website here: [Siva's Portfolio]([(https://siva-05.web.app/)])
+Check out the live version of the website here: [Siva's Portfolio](https://siva-05.web.app/)
 
 ## 🛠️ Technologies Used
 - **Frontend**: React.js, Tailwind CSS
