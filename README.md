@@ -7,7 +7,7 @@ Check out the live version of the website here: [Siva's Portfolio](https://siva-
 
 ## 🛠️ Technologies Used
 - **Frontend**: React.js, Tailwind CSS
-- **Hosting**: Vercel
+- **Hosting**: Firebase
 - **Design**: Responsive and user-friendly design
   
 ## ✨ Features
