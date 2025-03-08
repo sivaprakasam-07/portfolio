@@ -61,10 +61,10 @@ const Projects = ({ sectionsRef }) => {
             {projects.map((project, index) => (
               <motion.div
                 key={index}
-                className="group min-w-[350px] md:min-w-[450px] lg:min-w-[500px] rounded-2xl overflow-hidden shadow-lg bg-gray-800 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+                className="group min-w-[300px] md:min-w-[450px] lg:min-w-[500px] rounded-2xl overflow-hidden shadow-lg bg-gray-800 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
               >
                 {/* Image Section with Pixel Transition */}
-                <div className="w-full h-[300px] overflow-hidden">
+                <div className="w-full h-[200px] md:h-[300px] overflow-hidden">
                   <PixelTransition
                     firstContent={
                       <img
