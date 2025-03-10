@@ -6,7 +6,6 @@ import {
   FaJsSquare,
   FaReact,
   FaNodeJs,
-  FaGit,
   FaGithub,
   FaCode,
   FaFigma,
@@ -22,6 +21,7 @@ import {
   SiMongodb,
   SiExpress,
   SiPostman,
+  SiNextdotjs, // Added Next.js icon
 } from 'react-icons/si';
 import { TbBrandOpenai } from 'react-icons/tb';
 
@@ -29,7 +29,8 @@ const frontendSkills = [
   { name: 'HTML5', icon: FaHtml5, color: 'text-orange-500' },
   { name: 'CSS3', icon: FaCss3Alt, color: 'text-blue-500' },
   { name: 'JavaScript', icon: FaJsSquare, color: 'text-yellow-500' },
-  { name: 'React', icon: FaReact, color: 'text-cyan-400' },
+  { name: 'React Js', icon: FaReact, color: 'text-cyan-400' },
+  { name: 'Next Js', icon: SiNextdotjs, color: 'text-white' }, // Added Next.js
   { name: 'Redux', icon: SiRedux, color: 'text-purple-500' },
   { name: 'TailwindCSS', icon: SiTailwindcss, color: 'text-teal-400' },
   { name: 'Bootstrap', icon: FaBootstrap, color: 'text-purple-600' },
