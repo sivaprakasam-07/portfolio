@@ -70,12 +70,13 @@ const Hero = ({ sectionsRef }) => {
           variants={containerVariants}
         >
           <motion.a
-            href="/Sivaprakasam_T-Resume.pdf"
-            download="Sivaprakasam_T_Resume.pdf"
+            href="Public\Sivaprakasam_T.pdf"
             className="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-full flex items-center gap-2 hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
+            target="_blank"
+            rel="noopener noreferrer"
             variants={slideInFromBottom}
           >
-            <Download size={20} /> Download Resume
+            <Download size={20} /> View Resume
           </motion.a>
           <motion.a
             href="#contact"
