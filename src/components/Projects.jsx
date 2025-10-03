@@ -37,6 +37,14 @@ const projects = [
     tech: ["Flutter", "Dart", "Firebase"],
     github: "https://github.com/sivaprakasam-07/hydrax_new",
   },
+  {
+    title: "HydraX-Site",
+    description:
+      "A website for displaying the product details of HydraX",
+    image: "https://i.postimg.cc/y8D9sg7Y/Screenshot-2025-10-03-222308.png",
+    tech: ["ReactJS", "Tailwind CSS", "firebase"],
+    github: "",
+  },
 ];
 
 const Projects = ({ sectionsRef }) => {
