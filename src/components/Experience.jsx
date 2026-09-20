@@ -6,9 +6,7 @@ import {
   Calendar, 
   CheckCircle2, 
   Layers, 
-  GitBranch, 
-  Sparkles,
-  ArrowUpRight
+  GitBranch
 } from "lucide-react";
 
 const experiences = [
@@ -18,13 +16,14 @@ const experiences = [
     roleType: "Internship",
     company: "Skill First Labs",
     period: "Dec 2024 – Jan 2025",
+    dateTime: "2024-12/2025-01",
     duration: "2 mos",
     domain: "Fullstack Web Application Engineering",
     status: "Latest Role",
     summary: "Engineered fullstack client and server features for web applications using the MERN stack, participating in testing, debugging, and continuous usability refinements.",
     responsibilities: [
       "Designed and developed responsive web applications with React.js, Node.js, and Tailwind CSS, ensuring smooth cross-device functionality.",
-      "Collaborated in cross-functional team environments to architect scalable front-end and back-end features aligned with project specifications.",
+      "Collaborated in cross-functional team environments to implement front-end and back-end features aligned with project specifications.",
       "Identified, debugged, and resolved runtime bottlenecks and component regressions through structured testing cycles.",
       "Refined website usability, interactive states, and component accessibility based on stakeholder and user feedback.",
     ],
@@ -44,6 +43,7 @@ const experiences = [
     roleType: "Internship",
     company: "Syasan’s Career Analytics",
     period: "June 2024 – Sep 2024",
+    dateTime: "2024-06/2024-09",
     duration: "4 mos",
     domain: "Client Analytics & Responsive Web Platforms",
     status: "Completed",
@@ -78,7 +78,7 @@ const Experience = ({ sectionsRef }) => {
   }, [sectionsRef]);
 
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: shouldReduceMotion ? 1 : 0 },
     visible: {
       opacity: 1,
       transition: {
@@ -88,7 +88,7 @@ const Experience = ({ sectionsRef }) => {
   };
 
   const itemVariants = {
-    hidden: shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 24 },
+    hidden: shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 },
     visible: { 
       opacity: 1, 
       y: 0, 
@@ -129,9 +129,9 @@ const Experience = ({ sectionsRef }) => {
 
         {/* Timeline Container */}
         <div className="relative">
-          {/* Vertical Technical Spine */}
+          {/* Vertical Technical Spine - Aligned precisely with timeline nodes */}
           <div 
-            className="absolute left-4 sm:left-8 top-3 bottom-3 w-px bg-gradient-to-b from-accent-mint/70 via-border-subtle to-transparent" 
+            className="absolute left-4 sm:left-8 top-6 bottom-6 w-px bg-gradient-to-b from-accent-mint/70 via-border-subtle to-transparent" 
             aria-hidden="true" 
           />
 
@@ -149,17 +149,17 @@ const Experience = ({ sectionsRef }) => {
                 <motion.article
                   key={exp.id}
                   variants={itemVariants}
-                  className="relative pl-10 sm:pl-20 group"
+                  className="relative pl-10 sm:pl-16 md:pl-20 group"
                   aria-labelledby={`exp-title-${exp.id}`}
                 >
-                  {/* Timeline Node Icon */}
+                  {/* Timeline Node Icon - Accurately centered on spine (left-4 on mobile, left-8 on sm+) */}
                   <div 
-                    className="absolute left-1 sm:left-5 top-1.5 -translate-x-1/2 flex items-center justify-center"
+                    className="absolute left-4 sm:left-8 top-6 sm:top-7 -translate-x-1/2 flex items-center justify-center z-10"
                     aria-hidden="true"
                   >
                     {isLatest ? (
                       <div className="relative flex items-center justify-center">
-                        <span className="absolute w-6 h-6 rounded-full bg-accent-mint/20 animate-ping" />
+                        <span className="absolute w-6 h-6 rounded-full bg-accent-mint/20 animate-ping motion-reduce:hidden" />
                         <span className="relative w-4 h-4 rounded-full bg-accent-mint border-2 border-canvas shadow-glow-subtle" />
                       </div>
                     ) : (
@@ -168,10 +168,10 @@ const Experience = ({ sectionsRef }) => {
                   </div>
 
                   {/* Dossier Card */}
-                  <div className="rounded-2xl bg-surface-card border border-border-subtle hover:border-accent-mint/30 transition-all duration-300 p-6 sm:p-8 shadow-card-elevated">
+                  <div className="rounded-2xl bg-surface-card border border-border-subtle hover:border-accent-mint/30 transition-all duration-300 p-5 sm:p-7 md:p-8 shadow-card-elevated">
                     
                     {/* Header: Title, Company, Date, and Badges */}
-                    <header className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-4 border-b border-border-subtle/80">
+                    <header className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4 pb-4 border-b border-border-subtle/80">
                       <div>
                         <div className="flex flex-wrap items-center gap-2 mb-1.5">
                           <h3 
@@ -191,23 +191,23 @@ const Experience = ({ sectionsRef }) => {
                           )}
                         </div>
                         <div className="flex items-center gap-2 text-sm font-mono text-accent-mint">
-                          <Briefcase size={14} />
+                          <Briefcase size={14} className="shrink-0" />
                           <span>{exp.company}</span>
                         </div>
                       </div>
 
                       {/* Period & Duration */}
                       <div className="flex items-center gap-2 self-start sm:self-auto text-xs font-mono text-content-secondary">
-                        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-elevated border border-border-subtle">
-                          <Calendar size={13} className="text-accent-mint" />
-                          <time>{exp.period}</time>
+                        <div className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-surface-elevated border border-border-subtle">
+                          <Calendar size={13} className="text-accent-mint shrink-0" />
+                          <time dateTime={exp.dateTime}>{exp.period}</time>
                           <span className="text-content-muted">({exp.duration})</span>
                         </div>
                       </div>
                     </header>
 
                     {/* Domain & Scope Strip */}
-                    <div className="pt-3 pb-4 text-xs font-mono text-content-muted flex items-center gap-2">
+                    <div className="pt-3 pb-4 text-xs font-mono text-content-muted flex flex-wrap items-center gap-2">
                       <span className="text-content-secondary font-medium">Domain:</span>
                       <span>{exp.domain}</span>
                     </div>
@@ -237,9 +237,9 @@ const Experience = ({ sectionsRef }) => {
                     </div>
 
                     {/* Verified Tech Stack Chips */}
-                    <div className="pt-6 mt-6 border-t border-border-subtle/50">
+                    <div className="pt-5 mt-5 sm:pt-6 sm:mt-6 border-t border-border-subtle/50">
                       <div className="text-[11px] font-mono text-content-muted mb-2.5 flex items-center gap-1.5">
-                        <Layers size={13} className="text-accent-mint" />
+                        <Layers size={13} className="text-accent-mint shrink-0" />
                         <span>VERIFIED TOOLCHAIN & TECHNOLOGIES</span>
                       </div>
                       <div className="flex flex-wrap items-center gap-2">
@@ -265,7 +265,7 @@ const Experience = ({ sectionsRef }) => {
         <div className="mt-14 sm:mt-18 rounded-2xl bg-surface-card border border-border-subtle p-6 sm:p-7 shadow-card-elevated">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-border-subtle">
             <div className="flex items-center gap-2 text-xs font-mono text-accent-mint">
-              <GitBranch size={14} />
+              <GitBranch size={14} className="shrink-0" />
               <span className="uppercase tracking-wider">Professional Engineering Practices</span>
             </div>
             <span className="text-[11px] font-mono text-content-muted">

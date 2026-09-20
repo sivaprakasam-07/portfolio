@@ -240,7 +240,7 @@ const Navbar = ({ sectionsRef }) => {
                   {/* Status in mobile drawer */}
                   <div className="mt-4 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-elevated/60 border border-border-subtle text-[11px] font-mono text-content-secondary">
                     <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-mint opacity-75" />
+                      <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-mint opacity-75" />
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-mint" />
                     </span>
                     <span>Available for Opportunities</span>

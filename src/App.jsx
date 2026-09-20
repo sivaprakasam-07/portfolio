@@ -6,7 +6,8 @@ import About from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Experience from "./components/Experience";
-import Contact from "./components/Contact"; // Import SplashCursor
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 const App = () => {
   const sectionsRef = useRef([]);
@@ -20,6 +21,7 @@ const App = () => {
       <Projects sectionsRef={sectionsRef} />
       <Experience sectionsRef={sectionsRef} />
       <Contact sectionsRef={sectionsRef} />
+      <Footer />
     </div>
   );
 };
