@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, Terminal, Lock, Sparkles } from "lucide-react";
+import PixelSwap from "./PixelSwap";
 
 const rawProjects = [
   {
@@ -200,15 +201,61 @@ const Projects = ({ sectionsRef }) => {
                     </span>
                   </div>
 
-                  {/* Image Surface with Zoom Micro-interaction */}
+                  {/* Image Surface with PixelSwap Transition */}
                   <div className="relative aspect-video sm:aspect-[16/10] overflow-hidden bg-canvas">
-                    <img
-                      src={featuredProject.image}
-                      alt={`${featuredProject.title} — ${featuredProject.subtitle}`}
-                      className="w-full h-full object-cover object-center group-hover:scale-[1.03] motion-safe:transition-transform duration-500"
-                      loading="lazy"
+                    <PixelSwap
+                      trigger="hover"
+                      pixelSize={96}
+                      duration={450}
+                      pixelDuration={200}
+                      pixelScale={0.8}
+                      randomness={0.15}
+                      pattern="random"
+                      className="w-full h-full focus-visible:ring-2 focus-visible:ring-accent-mint focus-visible:ring-inset cursor-pointer"
+                      firstContent={
+                        <div className="relative w-full h-full overflow-hidden bg-canvas">
+                          <img
+                            src={featuredProject.image}
+                            alt={`${featuredProject.title} — ${featuredProject.subtitle}`}
+                            className="w-full h-full object-cover object-center"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-surface-card/70 via-transparent to-transparent pointer-events-none" />
+                          <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-md bg-canvas-dark/85 backdrop-blur-sm border border-border-subtle text-[11px] font-mono text-content-muted flex items-center gap-1.5 shadow-sm pointer-events-none">
+                            <Sparkles size={11} className="text-accent-mint" />
+                            <span>Hover / Focus to reveal</span>
+                          </div>
+                        </div>
+                      }
+                      secondContent={
+                        <div className="relative w-full h-full flex flex-col items-center justify-center p-6 text-center bg-canvas-dark/95 border border-accent-mint/20 overflow-hidden select-none">
+                          <div className="absolute inset-0 bg-tech-grid opacity-25 pointer-events-none" />
+                          <div className="absolute w-44 h-44 rounded-full bg-accent-mint/10 blur-2xl pointer-events-none" />
+                          
+                          <div className="relative z-10 space-y-2.5 max-w-sm px-4">
+                            <span className="inline-block text-[10px] sm:text-xs font-mono font-medium text-accent-mint uppercase tracking-widest px-2.5 py-0.5 rounded bg-accent-muted border border-accent-mint/30">
+                              {featuredProject.categoryLabel}
+                            </span>
+                            <h4 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                              {featuredProject.title}
+                            </h4>
+                            <p className="text-xs font-mono text-content-secondary line-clamp-2">
+                              {featuredProject.subtitle}
+                            </p>
+                            <div className="pt-2 flex flex-wrap justify-center gap-1.5">
+                              {featuredProject.tech.map((t, idx) => (
+                                <span
+                                  key={idx}
+                                  className="text-[10px] font-mono px-2 py-0.5 rounded bg-surface-elevated text-content-muted border border-border-subtle"
+                                >
+                                  {t}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      }
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-surface-card/60 via-transparent to-transparent pointer-events-none" />
                   </div>
                 </div>
 
@@ -312,15 +359,61 @@ const Projects = ({ sectionsRef }) => {
                       </span>
                     </div>
 
-                    {/* Screenshot Viewport */}
+                    {/* Screenshot Viewport with PixelSwap Transition */}
                     <div className="relative aspect-video w-full overflow-hidden bg-canvas border-b border-border-subtle">
-                      <img
-                        src={project.image}
-                        alt={`${project.title} — ${project.subtitle}`}
-                        className="w-full h-full object-cover object-top group-hover:scale-[1.03] motion-safe:transition-transform duration-500"
-                        loading="lazy"
+                      <PixelSwap
+                        trigger="hover"
+                        pixelSize={88}
+                        duration={420}
+                        pixelDuration={190}
+                        pixelScale={0.8}
+                        randomness={0.15}
+                        pattern="random"
+                        className="w-full h-full focus-visible:ring-2 focus-visible:ring-accent-mint focus-visible:ring-inset cursor-pointer"
+                        firstContent={
+                          <div className="relative w-full h-full overflow-hidden bg-canvas">
+                            <img
+                              src={project.image}
+                              alt={`${project.title} — ${project.subtitle}`}
+                              className="w-full h-full object-cover object-top"
+                              loading="lazy"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-surface-card/70 via-transparent to-transparent pointer-events-none" />
+                            <div className="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded bg-canvas-dark/85 backdrop-blur-sm border border-border-subtle text-[10px] font-mono text-content-muted flex items-center gap-1 shadow-sm pointer-events-none">
+                              <Sparkles size={10} className="text-accent-mint" />
+                              <span>Reveal</span>
+                            </div>
+                          </div>
+                        }
+                        secondContent={
+                          <div className="relative w-full h-full flex flex-col items-center justify-center p-5 text-center bg-canvas-dark/95 border border-accent-mint/20 overflow-hidden select-none">
+                            <div className="absolute inset-0 bg-tech-grid opacity-20 pointer-events-none" />
+                            <div className="absolute w-32 h-32 rounded-full bg-accent-mint/10 blur-xl pointer-events-none" />
+                            
+                            <div className="relative z-10 space-y-2 max-w-xs px-3">
+                              <span className="inline-block text-[10px] font-mono font-medium text-accent-mint uppercase tracking-wider px-2 py-0.5 rounded bg-accent-muted border border-accent-mint/30">
+                                {project.categoryLabel}
+                              </span>
+                              <h4 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                                {project.title}
+                              </h4>
+                              <p className="text-[11px] font-mono text-content-secondary line-clamp-2">
+                                {project.subtitle}
+                              </p>
+                              <div className="pt-1.5 flex flex-wrap justify-center gap-1">
+                                {project.tech.slice(0, 3).map((t, idx) => (
+                                  <span
+                                    key={idx}
+                                    className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-surface-elevated text-content-muted border border-border-subtle"
+                                  >
+                                    {t}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        }
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-surface-card/70 via-transparent to-transparent pointer-events-none" />
                     </div>
 
                     {/* Content Section */}

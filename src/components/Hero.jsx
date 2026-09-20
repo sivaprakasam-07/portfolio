@@ -10,6 +10,7 @@ import {
   ArrowUpRight,
   Code2
 } from "lucide-react";
+import BlinkingSquares from "./BlinkingSquares";
 
 const Hero = ({ sectionsRef }) => {
   const sectionRef = useRef(null);
@@ -62,6 +63,9 @@ const Hero = ({ sectionsRef }) => {
     >
       {/* Subtle Technical Coordinate Grid Background */}
       <div className="absolute inset-0 bg-tech-grid opacity-50 pointer-events-none" aria-hidden="true" />
+
+      {/* Ambient Blinking Squares Technical Accent */}
+      <BlinkingSquares gridSize={40} maxBlinkingSquares={12} />
 
       {/* Ambient Radial Mint Illumination */}
       <div 
