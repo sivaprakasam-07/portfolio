@@ -2,15 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg-canvas: #080A0C;
+  --bg-surface: #0D1117;
+  --bg-card: #12171F;
+  --accent-mint: #00F5A0;
+  --accent-emerald: #00D285;
+  --accent-glow: rgba(0, 245, 160, 0.15);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(255, 255, 255, 0.14);
+  --border-highlight: rgba(0, 245, 160, 0.3);
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+}
+
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  input, button, textarea, select {
+    font-family: inherit;
+  }
+}
+
+::selection {
+  background-color: rgba(0, 245, 160, 0.25);
+  color: #00F5A0;
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080A0C;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E2633;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2D3748;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
-
   to {
     opacity: 1;
   }
@@ -21,7 +75,6 @@ html {
     opacity: 0;
     transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -32,11 +85,9 @@ html {
   0% {
     transform: translateY(0px);
   }
-
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
   }
-
   100% {
     transform: translateY(0px);
   }
@@ -46,11 +97,9 @@ html {
   0% {
     background-position: 0% 50%;
   }
-
   50% {
     background-position: 100% 50%;
   }
-
   100% {
     background-position: 0% 50%;
   }
@@ -58,52 +107,75 @@ html {
 
 @keyframes glow {
   0% {
-    text-shadow: 0 0 10px rgba(255, 105, 180, 0.5), 0 0 20px rgba(255, 105, 180, 0.5), 0 0 30px rgba(255, 105, 180, 0.5), 0 0 40px rgba(255, 105, 180, 0.5);
+    text-shadow: 0 0 10px rgba(0, 245, 160, 0.3), 0 0 20px rgba(0, 245, 160, 0.2);
   }
-
   50% {
-    text-shadow: 0 0 20px rgba(255, 105, 180, 0.7), 0 0 30px rgba(255, 105, 180, 0.7), 0 0 40px rgba(255, 105, 180, 0.7), 0 0 50px rgba(255, 105, 180, 0.7);
+    text-shadow: 0 0 15px rgba(0, 245, 160, 0.5), 0 0 30px rgba(0, 245, 160, 0.3);
   }
-
   100% {
-    text-shadow: 0 0 10px rgba(255, 105, 180, 0.5), 0 0 20px rgba(255, 105, 180, 0.5), 0 0 30px rgba(255, 105, 180, 0.5), 0 0 40px rgba(255, 105, 180, 0.5);
+    text-shadow: 0 0 10px rgba(0, 245, 160, 0.3), 0 0 20px rgba(0, 245, 160, 0.2);
   }
 }
 
 .animate-glow {
-  animation: glow 2s infinite;
+  animation: glow 3s ease-in-out infinite;
 }
 
 .animate-fadeIn {
-  animation: fadeIn 1s ease-out;
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .animate-slideUp {
-  animation: slideUp 1s ease-out;
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .animate-float {
-  animation: float 3s ease-in-out infinite;
+  animation: float 4s ease-in-out infinite;
 }
 
 .gradient-bg {
-  background: linear-gradient(-45deg, #FF3366, #FF33CC, #3366FF, #33CCFF);
+  background: linear-gradient(-45deg, #080A0C, #0D141C, #101923, #080A0C);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
 
 .glass-effect {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(13, 17, 23, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
-/* Hide scrollbar for Chrome, Safari, and Edge */
+
+/* Technical Design Utilities */
+.bg-tech-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+}
+
+.bg-tech-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.mint-gradient-text {
+  background: linear-gradient(135deg, #00F5A0 0%, #00D285 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.code-font {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Hide scrollbar utility */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
-/* Hide scrollbar for Firefox */
 .no-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+

@@ -12,7 +12,7 @@ const App = () => {
   const sectionsRef = useRef([]);
 
   return (
-    <div>
+    <div className="bg-canvas text-content-primary min-h-screen font-sans selection:bg-accent-muted selection:text-accent-mint">
       <Navbar sectionsRef={sectionsRef} />
       <Hero sectionsRef={sectionsRef} />
       <About sectionsRef={sectionsRef} />
